@@ -1,7 +1,7 @@
 # Load tidyverse for dply package
 library(tidyverse)
 
-# Import and read the csv file as a dataframe
+# Import and read the MechaCar_mps csv file as a dataframe
 mechacar_df <- read.csv(file='MechaCar_mpg.csv',check.names=F,stringsAsFactors = F)
 
 # Perform linear regression using all six variables and the dataframe
@@ -9,3 +9,26 @@ lm(mpg ~ vehicle_length + vehicle_weight + spoiler_angle + ground_clearance + AW
 
 # Determine the p-value and r-squared value for the lm model
 summary(lm(mpg ~ vehicle_length + vehicle_weight + spoiler_angle + ground_clearance + AWD,data=mechacar_df))
+
+# Import and read the Suspension_coil csv file as a table
+suspension <- read.csv(file='Suspension_coil.csv',check.names=F,stringsAsFactors = F)
+
+# Create a dataframe to get the mean, median, variance, and standard deviation of the 
+# suspension coil’s PSI column
+total_summary <- summarize(suspension, Mean=mean(PSI), Median=median(PSI), Variance=var(PSI), SD=sd(PSI))
+total_summary 
+
+# Create a dataframe to group each manufacturing lot by the mean, median, 
+# variance, and standard deviation of the suspension coil’s PSI column
+lot_summary <- suspension %>% group_by(Manufacturing_Lot) %>% summarize(Mean=mean(PSI), Median=median(PSI), Variance=var(PSI), SD=sd(PSI))
+lot_summary
+
+# Determine if the PSI across all manufacturing lots is statistically different 
+# from the population mean of 1,500 pounds per square inch
+t.test(x=suspension$PSI,mu=1500) 
+
+# Determine if the PSI for each manufacturing lot is statistically different 
+# from the population mean of 1,500 pounds per square inch
+t.test(subset(suspension$PSI,mu=1500,suspension$Manufacturing_Lot=='Lot1'))
+t.test(subset(suspension$PSI,mu=1500,suspension$Manufacturing_Lot=='Lot2'))
+t.test(subset(suspension$PSI,mu=1500,suspension$Manufacturing_Lot=='Lot3'))
