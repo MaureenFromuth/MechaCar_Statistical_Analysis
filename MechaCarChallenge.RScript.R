@@ -47,8 +47,6 @@ t.test(log10(suspension$PSI),mu=mean(log10(1500)))
 # Determine if the PSI for each manufacturing lot is statistically different 
 # from the population mean of 1,500 pounds per square inch
 t.test(log10(subset(suspension, Manufacturing_Lot=='Lot1', select=PSI)),mu=mean(log10(1500)))
-t.test(log10(subset(suspension, Manufacturing_Lot=='Lot2', select=PSI)),mu=mean(log10(1500)))
-t.test(log10(subset(suspension, Manufacturing_Lot=='Lot3', select=PSI)),mu=mean(log10(1500)))
+t.test(subset(suspension, Manufacturing_Lot=='Lot2', select=PSI),mu=1500)
+t.test(subset(suspension, Manufacturing_Lot=='Lot3', select=PSI),mu=1500)
 
-Lot2_PSI <- suspension %>% filter(Manufacturing_Lot=="Lot2")
-shapiro.test(Lot2_PSI$PSI)
