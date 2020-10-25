@@ -5,6 +5,7 @@
 To set up this analysis, we need to first create two hypothesis: a null hypothesis, representing an outcome that can be explained by chance, and an alternate hypothesis, representing an outcome that can be explained by non-random events.  
 
 > H0 = The slope of the linear model is zero, or m = 0
+
 > Ha = The slope of the linear model is no zero or ≠ 0
 
 From there we use the tidyverse library and dply folder to read the [MechaCar_mpg CSV](https://github.com/MaureenFromuth/MechaCar_Statistical_Analysis/blob/main/MechaCar_mpg.csv) file, and then use the lm() and summary() functions within R to conduct our analysis.  Utilizing the output shown in the image below, we answered the following three questions:
@@ -78,6 +79,7 @@ Based on the analysis above, we can see the variance depicted for the total data
 As part of our analysis, we want to ensure that the data we have is in fact representative of the true population.  More specifically, we want to ensure that our analysis adequately represents the reality of suspension coils across all of the vehicles and lots.  To set up this analysis, we need to first create two hypothesis: a null hypothesis, representing no statistical difference between the sample and real mean, and an alternate hypothesis, representing a statistical difference between the sample and real mean.  
 
 > H0 = There is no statistical difference between the observed sample mean and it’s presumed population mean
+
 > Ha = There is a statistical difference between the observed sample mean and it’s presumed population mean
 
 Before testing these hypothesis, however, we need to take a look at the data to understand how it is distributed, namely is it skewed and is it normalized.  There are two critical components in selecting the proper statistical approach to answering our overall question.  To do this, we used two different techniques: a visual approach and the Shapiro-Wilk assessment.  Using the outputs, listed below in the two graphics (A: visual, B: Shapiro), we can see that the data is not skewed but is not normalized, because the p-value is less than .05.  As such, we will need to normalize the data before conducting our analysis.  If you break down the lots, you can check the distribution as well.  Using the same Shapiro and visual test, you will see that Lot 1’s p-value is .01 meaning it is not normally distributed which is also clear in the ggplot, whereas Lot 2 and Lot 3 are (Lot 2 p-value = .3004, Lot 3 p-value = .637).  As such, we will only need to normalize the data for Lot 1 and not Lot 2 or 3. 
@@ -142,6 +144,7 @@ To support MechaCar and their assessment of their business, they have asked for 
 For this test, we will use the following for our hypothesis:
 
 > H0 = The difference between our paired observations (the true mean difference) is equal to zero
+
 > Ha = The difference between our paired observations (the true mean difference) is not equal to zero
 
 The two sample paired t.test requires numerical data that is continuous.  As such, the data we collect must be continuous data, and we must select appropriate metrics that can be measured as such.  For example, we could use the average, or mean, cost of a car between MechaCar and its competitor as that data is continuous.  Using this metric, the t.test would tell us if there was any statistical difference between the paired observations, i.e. is one higher/lower than the other.  This would allow us to provide MechaCar an understanding of how they compare to their competitors.  To satisfy that data type, below is a list of metrics we would like to test in this study:
