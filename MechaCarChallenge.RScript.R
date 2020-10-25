@@ -27,6 +27,19 @@ lot_summary
 ggplot(suspension,aes(x=PSI)) + geom_density()
 shapiro.test(suspension$PSI)
 
+# Determine if the suspension coil data is normally distributed for each of the lots
+Lot1_PSI <- suspension %>% filter(Manufacturing_Lot=="Lot1")
+ggplot(Lot1_PSI,aes(x=PSI)) + geom_density()
+shapiro.test(Lot1_PSI$PSI)
+
+Lot2_PSI <- suspension %>% filter(Manufacturing_Lot=="Lot2")
+ggplot(Lot2_PSI,aes(x=PSI)) + geom_density()
+shapiro.test(Lot2_PSI$PSI)
+
+Lot3_PSI <- suspension %>% filter(Manufacturing_Lot=="Lot3")
+ggplot(Lot3_PSI,aes(x=PSI)) + geom_density()
+shapiro.test(Lot3_PSI$PSI)
+
 # Determine if the PSI across all manufacturing lots is statistically different 
 # from the population mean of 1,500 pounds per square inch
 t.test(log10(suspension$PSI),mu=mean(log10(1500)))
@@ -36,3 +49,6 @@ t.test(log10(suspension$PSI),mu=mean(log10(1500)))
 t.test(log10(subset(suspension, Manufacturing_Lot=='Lot1', select=PSI)),mu=mean(log10(1500)))
 t.test(log10(subset(suspension, Manufacturing_Lot=='Lot2', select=PSI)),mu=mean(log10(1500)))
 t.test(log10(subset(suspension, Manufacturing_Lot=='Lot3', select=PSI)),mu=mean(log10(1500)))
+
+Lot2_PSI <- suspension %>% filter(Manufacturing_Lot=="Lot2")
+shapiro.test(Lot2_PSI$PSI)
