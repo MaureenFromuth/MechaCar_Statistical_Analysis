@@ -150,7 +150,7 @@ For this test, we will use the following for our hypothesis:
 The two sample paired t.test requires numerical data that is continuous.  As such, the data we collect must be continuous data, and we must select appropriate metrics that can be measured as such.  For example, we could use the average, or mean, cost of a car between MechaCar and its competitor as that data is continuous.  Using this metric, the t.test would tell us if there was any statistical difference between the paired observations, i.e. is one higher/lower than the other.  This would allow us to provide MechaCar an understanding of how they compare to their competitors.  To satisfy that data type, below is a list of metrics we would like to test in this study:
 - Initial cost
 - Resale cost
-- # of miles driven for 1 year
+- Number of miles driven for 1 year
 - Maintenance cost for 1 year
 - Fuel cost for 1 year
 - Average mile per gallon (city)
